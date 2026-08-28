@@ -481,6 +481,11 @@ macro(project project_name)
         list(REMOVE_ITEM build_components ${test_components})
     endif()
 
+    list(REMOVE_ITEM build_components armino::main)
+    target_link_libraries(${project_elf} "-Wl,--whole-archive")
+    target_link_libraries(${project_elf} armino::main)
+    target_link_libraries(${project_elf} "-Wl,--no-whole-archive")
+
     target_link_libraries(${project_elf} ${build_components})
 
     # properties_libs generates an analysis ELF (not a bootable image).
