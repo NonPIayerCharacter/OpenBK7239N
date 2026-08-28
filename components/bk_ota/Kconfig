@@ -1,0 +1,43 @@
+menu "OTA"
+	config BK_OTA
+		bool "Enable new OTA"
+		default n
+		help
+			enable new OTA
+
+	config OTA_STATUS_CONFIRM
+		bool "OTA status confirm by application only (bk_init never touches)"
+		depends on BK_OTA
+		default n
+		help
+			When enabled, bk_init() will NEVER call OTA status confirm APIs:
+			bk_ota_cancel_update(), bk_ota_accept_image(), or
+			bk_ota_update_pubkey_partition(). Application must invoke them.
+			When disabled (default), bk_init performs OTA status confirm on boot.
+
+	#TODO fix me, delete this config after OTA refactor completed
+	config BK_OTA_NEW_PACK_TOOL
+		bool "Enable new pack tool"
+		default n
+		help
+			enable new pack tool
+
+	config OTA_MAGIC_BYTES
+		string "Set flash magic bytes"
+		default "BEKEN"
+
+	config OTA_BACKUP_PUBKEY_ENCRYPT
+		bool "Enable backup pubkey encrypt"
+		default n
+
+	config OTA_VERIFY_PUBKEY
+		bool "Verify OTA public key during image validation"
+		depends on BK_OTA
+		default y
+
+	config OTP_BL2_PUBKEY_HASH
+		bool "Verify OTA public key against OTP BL2 pubkey hash"
+		depends on BK_OTA && PSA_MBEDTLS && !OTA_VERIFY_PUBKEY
+		default n
+
+endmenu

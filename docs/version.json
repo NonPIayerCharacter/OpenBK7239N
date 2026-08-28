@@ -1,0 +1,16 @@
+[
+	{
+		"name" : "bk7236n",
+		"lang" : [ "zh-cn", "en" ],
+		"version" : [
+			"v2.2.1"
+		]
+	},
+	{
+		"name" : "bk7239n",
+		"lang" : [ "zh-cn", "en" ],
+		"version" : [
+			"v2.2.1"
+		]
+	}
+]

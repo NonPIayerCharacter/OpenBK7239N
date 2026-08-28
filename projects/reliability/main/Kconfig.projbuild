@@ -1,0 +1,83 @@
+menu "Project specific config"
+
+	config RELIABILITY_TEST
+		bool "Enable WiFi test"
+		default y
+
+	config WIFI_RELIABILITY_TEST
+		bool "Enable WiFi test"
+		default y
+
+	config WIFI_RELIABILITY_STA_SSID
+		string "STA SSID for WiFi reliability test"
+		default "wifi_reliability_test"
+		depends on WIFI_RELIABILITY_TEST
+
+	config WIFI_RELIABILITY_STA_PASSPHRASE
+		string "STA WPA passphrase for WiFi reliability test"
+		default "12345678"
+		depends on WIFI_RELIABILITY_TEST
+
+	config FLASH_RELIABILITY_TEST
+		bool "Enable Flash test"
+		default n
+
+	config FLASH_IMPORT_TEST
+		bool "Enable Flash import test"
+		default n
+
+	config FLASH_IMPORT_TEST_WITH_CBUS
+		bool "Enable Flash import test with CBUS"
+		default n
+		depends on FLASH_IMPORT_TEST && FLASH_CBUS
+
+	config FLASH_IMPORT_SLEEP_TEST
+		bool "Enable Flash import lvsleep/deepsleep test"
+		default n
+		depends on FLASH_IMPORT_TEST
+
+	config WIFI_RELIABILITY_SAVE_INTERVAL
+		int "Save interval for WiFi reliability stats (in seconds)"
+		default 600
+		depends on WIFI_RELIABILITY_TEST
+
+	config PSRAM_RELIABILITY_TEST
+		bool "Enable PSRAM test"
+		default n
+
+	config HTOL_RELIABILITY_TEST
+		bool "Enable HTOL test"
+		default n
+
+	config WIFI_RELIABILITY_STA_SECURITY
+		int "STA Security type for WiFi reliability test"
+		default 3
+		depends on WIFI_RELIABILITY_TEST
+
+	config RELIABILITY_CPU_FREQ_MHZ
+		int "CPU frequency for reliability test (MHz)"
+		default 240
+		range 120 240
+		help
+		  Select 120/160/240 MHz for CPU frequency voting in reliability tests.
+
+	config RELIABILITY_VOTE_PM_320_FOR_CPU_FREQ_160
+		bool "Use PM_CPU_FRQ_320M vote when RELIABILITY_CPU_FREQ_MHZ is 160"
+		default n
+		help
+		  Enables platforms where nominal 160 MHz is selected via PM_CPU_FRQ_320M.
+
+	config FLASH_IMPORT_DRIVER_LOW_FLASH_CLK_48M
+		bool "Use 48 MHz as lowest flash clock in import driver sweep"
+		default n
+		depends on FLASH_IMPORT_TEST
+		help
+		  If enabled, driver test sweeps 48/60/80/120 MHz.
+		  Otherwise sweeps 40/60/80/120 MHz.
+
+	config WIFI_RELIABILITY_SHOW_TEMP_INTERVAL
+		int "Show temperature interval for WiFi reliability test (in seconds)"
+		default 10
+		depends on WIFI_RELIABILITY_TEST
+
+endmenu

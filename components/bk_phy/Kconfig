@@ -1,0 +1,26 @@
+#TODO optimize it
+menu "Bk_Phy"
+
+	config PHY_LOG_ENABLE
+		bool "Enable voltage detect"
+		default n
+
+	config DPD_CALI
+		bool "Enable DPD Cali"
+		default n
+
+	config FT_TXPWR_CAL
+		bool "Enable FT TX power calibration from OTP"
+		default y
+		help
+			Read FT power calibration from OTP_PHY_PWR1/OTP_PHY_PWR2.
+
+	config DPD_CALI_GROUP
+		int "Number of Group for DPD Cali"
+		default 8
+
+	config RF_COEX_JUDGE
+		bool "Enable rf coex judge with wifi ble thread temp"
+		default n
+
+endmenu

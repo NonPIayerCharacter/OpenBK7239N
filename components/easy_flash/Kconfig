@@ -1,0 +1,30 @@
+menu "Easy_flash"
+	config EASY_FLASH
+		depends on FLASH
+		bool "Enable Easy Flash"
+		default y
+
+	config EASY_FLASH_TEST
+		depends on EASY_FLASH
+		bool "Enable Easy Flash Test"
+		default n
+
+	config EASY_FLASH_ENV_BACKUP_ENABLE
+		depends on EASY_FLASH
+		bool "Enable Easy Flash ENV backup partition"
+		default n
+
+	menu "Modify Easy Flash Config"
+		depends on EASY_FLASH
+
+		choice EASY_FLASH_VER
+			prompt "Select Easy Flash Version"
+			default EASY_FLASH_V4
+
+			config EASY_FLASH_V4
+				bool "EASY_FLASH_V4"
+				help
+					EASY_FLASH v4.1.0
+		endchoice
+	endmenu
+endmenu
