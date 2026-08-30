@@ -1292,7 +1292,7 @@ void tcp_clear_ps_flag(struct tcp_pcb *tpcb)
   //os_printf("clear tcp_ps_flag 0x%x\r\n", tcp_ps_flag);
   if(tcp_ps_flag == 0)
   {
-    os_printf("cleared tcp_ps_flag.\r\n");
+    //os_printf("cleared tcp_ps_flag.\r\n");
     //ps_clear_dhcp_ongoing_prevent();
     //tcp_ps_flag_stop_timeout_check();
   }

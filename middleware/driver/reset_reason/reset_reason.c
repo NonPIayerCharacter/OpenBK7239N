@@ -53,7 +53,7 @@ bool persist_memory_is_lost(void)
 		return true;
 }
 
-static char *misc_get_start_type_str(uint32_t start_type)
+char *misc_get_start_type_str(uint32_t start_type)
 {
 #if CONFIG_DISPLAY_START_TYPE_STR
     switch (start_type) {

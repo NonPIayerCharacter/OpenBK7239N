@@ -99,7 +99,7 @@
 #define configUSE_TIMERS                            ( 1 )
 #define configTIMER_TASK_PRIORITY                   CONFIG_FREERTOS_TIMER_TASK_PRIO
 #define configTIMER_QUEUE_LENGTH                    ( 16 )
-#define configTIMER_TASK_STACK_DEPTH                ( ( unsigned short ) (3072 / sizeof( portSTACK_TYPE )) )
+#define configTIMER_TASK_STACK_DEPTH                ( ( unsigned short ) (9216 / sizeof( portSTACK_TYPE )) )
 
 /* Task */
 #if CONFIG_FREERTOS_V10
