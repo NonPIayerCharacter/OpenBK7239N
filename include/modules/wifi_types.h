@@ -24,6 +24,7 @@
 extern "C" {
 #endif
 
+#define PMK_LEN 32
 /**
  * @brief WiFi APIs Version 2 (New WiFi API)
  * @addtogroup bk_api_wifi_v2 New WiFi API group
@@ -525,7 +526,7 @@ typedef struct {
 	int freq_list[WIFI_2BAND_MAX_CHAN_NUM + 1]; /**< optional zero-terminated array of frequencies in megahertz (MHz) to allow for selecting the BSS */
 	uint8_t reserved[32];              /**< reserved, **must set to 0** */
 #ifdef CONFIG_CONNECT_THROUGH_PSK_OR_SAE_PASSWORD
-	uint8_t psk[65];
+	//uint8_t psk[65];
 	uint8_t psk_len;
 	bool psk_calculated;
 #endif
